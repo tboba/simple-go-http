@@ -9,6 +9,7 @@ import (
 
 const version = "1.0.0"
 
+// Config specifies the available keys in the configuration file.
 type Config struct {
 	Port string
 }
@@ -24,6 +25,7 @@ func LoadConfiguration() Config {
 		panic(err.Error())
 	}
 
+	// Parse the configuration file.
 	err = yaml.Unmarshal(fileConfig, &config)
 
 	if err != nil {
