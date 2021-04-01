@@ -41,4 +41,16 @@ func main() {
 		fmt.Println("Type \"help\" for the command list.")
 	}
 
+	switch os.Args[1] {
+	case "help":
+		HandleHelpCommand()
+	case "version":
+		HandleVersionCommand()
+		break
+	case "run":
+		HandleRunCommand()
+		break
+	default:
+		HandleUnknownCommand()
+	}
 }
