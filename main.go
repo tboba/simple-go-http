@@ -39,11 +39,13 @@ func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Not enough parameters have been provided!")
 		fmt.Println("Type \"help\" for the command list.")
+		return
 	}
 
 	switch os.Args[1] {
 	case "help":
 		HandleHelpCommand()
+		break
 	case "version":
 		HandleVersionCommand()
 		break
