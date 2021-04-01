@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+	"os"
+)
 
 var commandMap = make(map[string]string)
 
@@ -24,7 +28,17 @@ func HandleVersionCommand() {
 }
 
 func HandleRunCommand() {
-	// TODO: Serve an HTTP server.
+	configuration := LoadConfiguration()
+
+	fileFlag := flag.NewFlagSet("run", flag.ExitOnError)
+	fileName := fileFlag.String("file", "",
+		"Correct path to the file with adequate extension.")
+
+	_ = fileFlag.Parse(os.Args[2:])
+
+	if IsRunCommandCorrect(os.Args, *fileName) {
+		ServeHtmlServer(configuration, *fileName)
+	}
 }
 
 func initializeCommandMap() {
