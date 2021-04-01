@@ -10,7 +10,6 @@ import (
 const version = "1.0.0"
 
 type Config struct {
-	Host string
 	Port string
 }
 
@@ -45,13 +44,10 @@ func main() {
 	switch os.Args[1] {
 	case "help":
 		HandleHelpCommand()
-		break
 	case "version":
 		HandleVersionCommand()
-		break
 	case "run":
 		HandleRunCommand()
-		break
 	default:
 		HandleUnknownCommand()
 	}
